@@ -1,7 +1,8 @@
 import * as React from "react";
 
-let myLibrary = [];
+let myLibrary: Array<object> = [];
 
+// book constructor
 class Book {
   title: string;
   author: string;
@@ -21,14 +22,24 @@ class Book {
   }
 }
 
-let harryPotter = new Book("Harry Potter", "J.K Rowling", 300, "Read");
+// Create new books and add them to the array
+function addBookToLibrary() {
+  let title = prompt("title");
+  let author = prompt("author");
+  let pageCount = prompt("page count");
+  let readStatus = prompt("have you read this?");
 
-function addBookToLibrary() {}
+  const newBook = new Book(title, author, pageCount, readStatus);
+
+  myLibrary.push(newBook);
+  console.log(myLibrary);
+}
 
 const Library = () => {
   return (
     <div>
       <h1>test</h1>
+      <button onClick={addBookToLibrary}>Add Book</button>
     </div>
   );
 };
