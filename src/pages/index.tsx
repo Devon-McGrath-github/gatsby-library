@@ -1,8 +1,8 @@
 import * as React from "react";
-import Layout from "../components/Layout.js";
+import Library from "../components/Library";
 
 const IndexPage = () => {
-  return <Layout pageTitle="Javascript Library"></Layout>;
+  return <Library pageTitle="Javascript Library"></Library>;
 };
 
 export const Head = () => <title>Javascript Library</title>;
