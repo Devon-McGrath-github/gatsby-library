@@ -6,8 +6,8 @@ const INITIAL_LIBRARY: Array<object> = [
 ];
 const INITIAL_TITLE: string = "";
 const INITIAL_AUTHOR: string = "";
-const INITIAL_PAGECOUNT: string = null;
-const INITIAL_CHECKBOX: string = false;
+const INITIAL_PAGECOUNT: number | null = null;
+const INITIAL_CHECKBOX: boolean = false;
 
 // book constructor
 class Book {
@@ -51,6 +51,9 @@ const Library = () => {
     setMyLibrary([newBook, ...myLibrary]);
 
     setTitleText(INITIAL_TITLE);
+    setAuthorName(INITIAL_AUTHOR);
+    setPageCount(INITIAL_PAGECOUNT);
+    setChecked(INITIAL_CHECKBOX);
   }
 
   // book modal (if statement?? )
