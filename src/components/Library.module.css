@@ -1,0 +1,9 @@
+.container {
+  margin: auto;
+  max-width: 100%;
+  font-family: sans-serif;
+}
+.heading {
+  color: rebeccapurple;
+  text-align: center;
+}

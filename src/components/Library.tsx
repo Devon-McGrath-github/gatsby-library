@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+// import LibraryCSS
 
 let initialLibrary: Array<object> = [
   { title: "test", author: "author", pages: 300, readStatus: "read" },
@@ -6,11 +7,10 @@ let initialLibrary: Array<object> = [
 
 // book constructor
 class Book {
-  title: string;
-  author: string;
-  pages: number;
-  readStatus: string;
-
+  title?: string;
+  author?: string;
+  pages?: number;
+  readStatus?: string;
   constructor(
     theTitle: string,
     theAuthor: string,
@@ -27,15 +27,22 @@ class Book {
 const Library = () => {
   const [myLibrary, setMyLibrary] = useState(initialLibrary);
 
+  const [titleText, setTitleText] = useState("");
+  const [authorName, setAuthorName] = useState("");
+  const [pageCount, setPageCount] = useState<null | number>(null);
+
+  // update checkbox
+  const [checked, setChecked] = React.useState(false);
+  const handleChange = () => {
+    // setChecked(!checked);
+  };
+
   // Create new books and add them to the array
   //    --replace with modal that has input fields
   function addBookToLibrary() {
-    let title = prompt("title");
-    let author = prompt("author");
-    let pageCount = prompt("page count");
-    let readStatus = prompt("have you read this?");
+    let readStatus = checked ? "Read" : "Unread";
 
-    const newBook = new Book(title, author, pageCount, readStatus);
+    const newBook = new Book(titleText, authorName, pageCount, readStatus);
 
     setMyLibrary([newBook, ...myLibrary]);
   }
@@ -53,8 +60,40 @@ const Library = () => {
 
   return (
     <div>
-      <h1>test</h1>
-      <button onClick={addBookToLibrary}>Add Book</button>
+      {/* <button onClick={addBookToLibrary}>Add Book</button> */}
+      <form onSubmit={addBookToLibrary}>
+        <label htmlFor="title">Add Book:</label>
+        <input
+          type="text"
+          id="title"
+          value={titleText}
+          placeholder="Title"
+          onChange={(e) => setTitleText(e.target.value)}
+        />
+        <input
+          type="text"
+          id="author"
+          value={authorName}
+          placeholder="Author"
+          onChange={(e) => setAuthorName(e.target.value)}
+        />
+        <input
+          type="number"
+          id="pageCount"
+          placeholder="Pages"
+          value={pageCount}
+          onChange={(e) => setPageCount(e.target.value)}
+        />
+        <label htmlFor="readStatus">Have you read it?</label>
+        <input
+          type="checkbox"
+          id="readStatus"
+          value={checked}
+          onChange={handleChange}
+        />
+        <button type="submit">Add Book</button>
+      </form>
+
       {libraryItems}
     </div>
   );
