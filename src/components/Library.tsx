@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 // import LibraryCSS
 
-let initialLibrary: Array<object> = [
+const INITIAL_LIBRARY: Array<object> = [
   { title: "test", author: "author", pages: 300, readStatus: "read" },
 ];
+const INITIAL_TITLE: string = "";
+const INITIAL_AUTHOR: string = "";
+const INITIAL_PAGECOUNT: string = null;
+const INITIAL_CHECKBOX: string = false;
 
 // book constructor
 class Book {
@@ -25,26 +29,28 @@ class Book {
 }
 
 const Library = () => {
-  const [myLibrary, setMyLibrary] = useState(initialLibrary);
+  const [myLibrary, setMyLibrary] = useState(INITIAL_LIBRARY);
 
-  const [titleText, setTitleText] = useState("");
-  const [authorName, setAuthorName] = useState("");
-  const [pageCount, setPageCount] = useState<null | number>(null);
+  const [titleText, setTitleText] = useState(INITIAL_TITLE);
+  const [authorName, setAuthorName] = useState(INITIAL_AUTHOR);
+  const [pageCount, setPageCount] = useState<null | number>(INITIAL_PAGECOUNT);
 
   // update checkbox
-  const [checked, setChecked] = React.useState(false);
+  const [checked, setChecked] = React.useState(INITIAL_CHECKBOX);
   const handleChange = () => {
-    // setChecked(!checked);
+    setChecked(!checked);
   };
 
   // Create new books and add them to the array
   //    --replace with modal that has input fields
   function addBookToLibrary() {
-    let readStatus = checked ? "Read" : "Unread";
+    let status = checked ? "Read" : "Unread";
 
-    const newBook = new Book(titleText, authorName, pageCount, readStatus);
+    const newBook = new Book(titleText, authorName, pageCount, status);
 
     setMyLibrary([newBook, ...myLibrary]);
+
+    setTitleText(INITIAL_TITLE);
   }
 
   // book modal (if statement?? )
@@ -60,7 +66,6 @@ const Library = () => {
 
   return (
     <div>
-      {/* <button onClick={addBookToLibrary}>Add Book</button> */}
       <form onSubmit={addBookToLibrary}>
         <label htmlFor="title">Add Book:</label>
         <input
@@ -91,8 +96,8 @@ const Library = () => {
           value={checked}
           onChange={handleChange}
         />
-        <button type="submit">Add Book</button>
       </form>
+      <button onClick={addBookToLibrary}>Add Book</button>
 
       {libraryItems}
     </div>
