@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import LibraryCSS
+import { grid, card } from "./Library.module.css";
 
 const INITIAL_LIBRARY: Array<object> = [
   { title: "test", author: "author", pages: 300, readStatus: "read" },
@@ -59,7 +59,7 @@ const Library = () => {
   // book modal (if statement?? )
 
   const libraryItems = myLibrary.map((book) => (
-    <div>
+    <div className={card}>
       <h3>{book.title}</h3>
       <h4>{book.author}</h4>
       <p>{book.pages} pages</p>
@@ -72,6 +72,7 @@ const Library = () => {
       <form onSubmit={addBookToLibrary}>
         <label htmlFor="title">Add Book:</label>
         <input
+          required
           type="text"
           id="title"
           value={titleText}
@@ -79,6 +80,7 @@ const Library = () => {
           onChange={(e) => setTitleText(e.target.value)}
         />
         <input
+          required
           type="text"
           id="author"
           value={authorName}
@@ -86,6 +88,7 @@ const Library = () => {
           onChange={(e) => setAuthorName(e.target.value)}
         />
         <input
+          required
           type="number"
           id="pageCount"
           placeholder="Pages"
@@ -102,7 +105,7 @@ const Library = () => {
       </form>
       <button onClick={addBookToLibrary}>Add Book</button>
 
-      {libraryItems}
+      <div className={grid}>{libraryItems}</div>
     </div>
   );
 };

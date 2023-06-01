@@ -1,6 +1,7 @@
 import * as React from "react";
 import Layout from "../components/Layout";
 import Library from "../components/Library";
+import "./index.css";
 
 const PAGETITLE: string = "Javascript Layout";
 

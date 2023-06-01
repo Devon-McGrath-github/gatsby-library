@@ -1,9 +1,10 @@
-.container {
-  margin: auto;
-  max-width: 100%;
-  font-family: sans-serif;
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-flow: row;
+  gap: 15px;
 }
-.heading {
-  color: rebeccapurple;
-  text-align: center;
+
+.card {
+  background: ;
 }
