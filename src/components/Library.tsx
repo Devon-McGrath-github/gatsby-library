@@ -3,10 +3,12 @@ import {
   contentWrapper,
   grid,
   formModal,
+  modalOverlay,
   form,
   card,
   cardContent,
   readStatus,
+  addBookBtn
 } from "./Library.module.css";
 
 const INITIAL_LIBRARY: Array<object> = [
@@ -79,8 +81,9 @@ const Library = () => {
 
   return (
     <div className={contentWrapper}>
-      <div className={grid}>{libraryItems}</div>
-
+      <div className={addBookBtn}>
+        <button >Add Book</button>
+      </div>
       <div className={formModal}>
         <form onSubmit={addBookToLibrary} className={form}>
           <label htmlFor="title">Add Book:</label>
@@ -120,6 +123,8 @@ const Library = () => {
           <button onClick={addBookToLibrary}>Add Book</button>
         </form>
       </div>
+      <div className={modalOverlay}></div>
+      <div className={grid}>{libraryItems}</div>
     </div>
   );
 };

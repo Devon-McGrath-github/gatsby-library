@@ -14,18 +14,25 @@
   gap: var(--spacing);
 }
 
-/* .formModal {
+.modalOverlay {
+  background-color: rgba(64, 60, 62, 0.66);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   position: fixed;
+  z-index: 1;
+  display: none;
+}
 
-  top: 50%;
+.formModal {
+  position: absolute;
   left: 50%;
-  bottom: 50%;
-  width: 300px;
-  max-width: 100%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, 0);
+  z-index: 2;
   border-radius: 5px;
-  transition: 0.2s ease-in-out;
-} */
+  display: none;
+}
 
 .form {
   display: flex;
@@ -34,6 +41,12 @@
   text-align: center;
   background-color: var(--bg-color);
   padding: 16px;
+}
+
+.addBookBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .readStatus {
