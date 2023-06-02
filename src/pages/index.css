@@ -69,3 +69,7 @@ h6 {
 }
 
 /* ----- end of CSS RESET ------ */
+
+body {
+  background: #fff;
+}

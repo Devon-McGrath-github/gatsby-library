@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { grid, card } from "./Library.module.css";
+import { contentWrapper, grid, card, cardContent } from "./Library.module.css";
 
 const INITIAL_LIBRARY: Array<object> = [
   { title: "test", author: "author", pages: 300, readStatus: "read" },
@@ -60,15 +60,17 @@ const Library = () => {
 
   const libraryItems = myLibrary.map((book) => (
     <div className={card}>
-      <h3>{book.title}</h3>
-      <h4>{book.author}</h4>
-      <p>{book.pages} pages</p>
-      <p>{book.readStatus}</p>
+      <div className={cardContent}>
+        <h3>{book.title}</h3>
+        <h4>{book.author}</h4>
+        <p>{book.pages} pages</p>
+        <p>{book.readStatus}</p>
+      </div>
     </div>
   ));
 
   return (
-    <div>
+    <div className={contentWrapper}>
       <form onSubmit={addBookToLibrary}>
         <label htmlFor="title">Add Book:</label>
         <input
