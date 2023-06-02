@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import FormModal from "./FormModal";
 import {
   contentWrapper,
   grid,
@@ -8,7 +9,7 @@ import {
   card,
   cardContent,
   readStatus,
-  addBookBtn
+  addBookBtn,
 } from "./Library.module.css";
 
 const INITIAL_LIBRARY: Array<object> = [
@@ -40,6 +41,9 @@ class Book {
 
 const Library = () => {
   const [myLibrary, setMyLibrary] = useState(INITIAL_LIBRARY);
+
+  const [openModal, setOpenModal] = useState(false);
+  const Toggle = () => setOpenModal(!openModal);
 
   const [titleText, setTitleText] = useState(INITIAL_TITLE);
   const [authorName, setAuthorName] = useState(INITIAL_AUTHOR);
@@ -82,8 +86,11 @@ const Library = () => {
   return (
     <div className={contentWrapper}>
       <div className={addBookBtn}>
-        <button >Add Book</button>
+        <button className="clickme" onClick={() => setOpenModal(!openModal)}>
+          Add Book
+        </button>
       </div>
+      <FormModal open={openModal}></FormModal>
       <div className={formModal}>
         <form onSubmit={addBookToLibrary} className={form}>
           <label htmlFor="title">Add Book:</label>
