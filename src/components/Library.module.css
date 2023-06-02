@@ -18,6 +18,11 @@
   height: 100%;
   margin: 0 auto;
   position: relative;
+  border-radius: 5px;
+  box-shadow: 5px 30px 60px rgba(0, 0, 0, 0.12);
+}
+.card:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
 }
 
 .cardContent {
