@@ -70,6 +70,10 @@ h6 {
 
 /* ----- end of CSS RESET ------ */
 
+html {
+  min-height: 100%;
+}
+
 body {
   background: #fff;
 }

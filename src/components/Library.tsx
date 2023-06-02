@@ -1,5 +1,13 @@
 import React, { useState } from "react";
-import { contentWrapper, grid, card, cardContent } from "./Library.module.css";
+import {
+  contentWrapper,
+  grid,
+  formModal,
+  form,
+  card,
+  cardContent,
+  readStatus,
+} from "./Library.module.css";
 
 const INITIAL_LIBRARY: Array<object> = [
   { title: "test", author: "author", pages: 300, readStatus: "read" },
@@ -71,43 +79,47 @@ const Library = () => {
 
   return (
     <div className={contentWrapper}>
-      <form onSubmit={addBookToLibrary}>
-        <label htmlFor="title">Add Book:</label>
-        <input
-          required
-          type="text"
-          id="title"
-          value={titleText}
-          placeholder="Title"
-          onChange={(e) => setTitleText(e.target.value)}
-        />
-        <input
-          required
-          type="text"
-          id="author"
-          value={authorName}
-          placeholder="Author"
-          onChange={(e) => setAuthorName(e.target.value)}
-        />
-        <input
-          required
-          type="number"
-          id="pageCount"
-          placeholder="Pages"
-          value={pageCount}
-          onChange={(e) => setPageCount(e.target.value)}
-        />
-        <label htmlFor="readStatus">Have you read it?</label>
-        <input
-          type="checkbox"
-          id="readStatus"
-          value={checked}
-          onChange={handleChange}
-        />
-      </form>
-      <button onClick={addBookToLibrary}>Add Book</button>
-
       <div className={grid}>{libraryItems}</div>
+
+      <div className={formModal}>
+        <form onSubmit={addBookToLibrary} className={form}>
+          <label htmlFor="title">Add Book:</label>
+          <input
+            required
+            type="text"
+            id="title"
+            value={titleText}
+            placeholder="Title"
+            onChange={(e) => setTitleText(e.target.value)}
+          />
+          <input
+            required
+            type="text"
+            id="author"
+            value={authorName}
+            placeholder="Author"
+            onChange={(e) => setAuthorName(e.target.value)}
+          />
+          <input
+            required
+            type="number"
+            id="pageCount"
+            placeholder="Pages"
+            value={pageCount}
+            onChange={(e) => setPageCount(e.target.value)}
+          />
+          <div className={readStatus}>
+            <label htmlFor="readStatus">Have you read it?</label>
+            <input
+              type="checkbox"
+              id="readStatus"
+              value={checked}
+              onChange={handleChange}
+            />
+          </div>
+          <button onClick={addBookToLibrary}>Add Book</button>
+        </form>
+      </div>
     </div>
   );
 };
