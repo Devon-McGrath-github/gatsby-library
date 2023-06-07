@@ -13,7 +13,7 @@ import {
 } from "./Library.module.css";
 
 const INITIAL_LIBRARY: Array<object> = [
-  { title: "test", author: "author", readStatus: "read" },
+  { id: "ID", title: "title", author: "author", readStatus: "read" },
 ];
 const INITIAL_TITLE: string = "";
 const INITIAL_AUTHOR: string = "";
@@ -21,11 +21,12 @@ const INITIAL_CHECKBOX: boolean = false;
 
 // book constructor
 class Book {
+  id: UUID;
   title?: string;
   author?: string;
   readStatus?: string;
   constructor(theTitle: string, theAuthor: string, theReadStatus: string) {
-    this.title = theTitle;
+    (this.id = self.crypto.randomUUID()), (this.title = theTitle);
     this.author = theAuthor;
     this.readStatus = theReadStatus;
   }
@@ -35,7 +36,6 @@ const Library = () => {
   const [myLibrary, setMyLibrary] = useState(INITIAL_LIBRARY);
 
   const [openModal, setOpenModal] = useState(false);
-  const Toggle = () => setOpenModal(!openModal);
 
   const [titleText, setTitleText] = useState(INITIAL_TITLE);
   const [authorName, setAuthorName] = useState(INITIAL_AUTHOR);
@@ -65,6 +65,7 @@ const Library = () => {
   const libraryItems = myLibrary.map((book) => (
     <div className={card}>
       <div className={cardContent}>
+        <h3>{book.id}</h3>
         <h3>{book.title}</h3>
         <h4>{book.author}</h4>
         <p>{book.readStatus}</p>
