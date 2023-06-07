@@ -13,28 +13,20 @@ import {
 } from "./Library.module.css";
 
 const INITIAL_LIBRARY: Array<object> = [
-  { title: "test", author: "author", pages: 300, readStatus: "read" },
+  { title: "test", author: "author", readStatus: "read" },
 ];
 const INITIAL_TITLE: string = "";
 const INITIAL_AUTHOR: string = "";
-const INITIAL_PAGECOUNT: number | null = null;
 const INITIAL_CHECKBOX: boolean = false;
 
 // book constructor
 class Book {
   title?: string;
   author?: string;
-  pages?: number;
   readStatus?: string;
-  constructor(
-    theTitle: string,
-    theAuthor: string,
-    pageCount: number,
-    theReadStatus: string
-  ) {
+  constructor(theTitle: string, theAuthor: string, theReadStatus: string) {
     this.title = theTitle;
     this.author = theAuthor;
-    this.pages = pageCount;
     this.readStatus = theReadStatus;
   }
 }
@@ -47,7 +39,6 @@ const Library = () => {
 
   const [titleText, setTitleText] = useState(INITIAL_TITLE);
   const [authorName, setAuthorName] = useState(INITIAL_AUTHOR);
-  const [pageCount, setPageCount] = useState<null | number>(INITIAL_PAGECOUNT);
 
   // update checkbox
   const [checked, setChecked] = React.useState(INITIAL_CHECKBOX);
@@ -60,13 +51,12 @@ const Library = () => {
   function addBookToLibrary() {
     let status = checked ? "Read" : "Unread";
 
-    const newBook = new Book(titleText, authorName, pageCount, status);
+    const newBook = new Book(titleText, authorName, status);
 
     setMyLibrary([newBook, ...myLibrary]);
 
     setTitleText(INITIAL_TITLE);
     setAuthorName(INITIAL_AUTHOR);
-    setPageCount(INITIAL_PAGECOUNT);
     setChecked(INITIAL_CHECKBOX);
   }
 
@@ -77,7 +67,6 @@ const Library = () => {
       <div className={cardContent}>
         <h3>{book.title}</h3>
         <h4>{book.author}</h4>
-        <p>{book.pages} pages</p>
         <p>{book.readStatus}</p>
       </div>
     </div>
@@ -109,14 +98,6 @@ const Library = () => {
             value={authorName}
             placeholder="Author"
             onChange={(e) => setAuthorName(e.target.value)}
-          />
-          <input
-            required
-            type="number"
-            id="pageCount"
-            placeholder="Pages"
-            value={pageCount}
-            onChange={(e) => setPageCount(e.target.value)}
           />
           <div className={readStatus}>
             <label htmlFor="readStatus">Have you read it?</label>
