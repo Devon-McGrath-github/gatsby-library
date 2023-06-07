@@ -80,7 +80,7 @@ const Library = () => {
           Add Book
         </button>
       </div>
-      <FormModal open={openModal}></FormModal>
+      {openModal ? <FormModal></FormModal> : null}
       <div className={formModal}>
         <form onSubmit={addBookToLibrary} className={form}>
           <label htmlFor="title">Add Book:</label>
