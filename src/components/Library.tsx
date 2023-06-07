@@ -46,7 +46,6 @@ const Library = () => {
   };
 
   // Create new books and add them to the array
-  //    --replace with modal that has input fields
   function addBookToLibrary() {
     let status = checked ? "Read" : "Unread";
 
