@@ -1,6 +1,6 @@
 :root {
   --spacing: 24px;
-  --bg-color: #fff;
+  --bg-color: #242424;
   --hov-color: #646cff;
 }
 
@@ -33,7 +33,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
-  border-radius: 5px;
+  transition: 0.2s ease-in-out;
 }
 
 .form {
@@ -43,6 +43,12 @@
   text-align: center;
   background-color: var(--bg-color);
   padding: 16px;
+  border-radius: 5px;
+}
+.form label {
+  font-size: 1.5em;
+  font-weight: 500;
+  font-family: inherit;
 }
 
 .addBookBtn {

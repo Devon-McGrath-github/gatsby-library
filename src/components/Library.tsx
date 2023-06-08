@@ -85,10 +85,14 @@ const Library = () => {
         </button>
       </div>
       {openModal ? (
-        <div className={modalOverlay}>
+        <div>
+          <div
+            className={modalOverlay}
+            onClick={() => setOpenModal(!openModal)}
+          ></div>
           <div className={formModal}>
             <form onSubmit={addBookToLibrary} className={form}>
-              <label htmlFor="title">Add Book:</label>
+              <h2>Add Book</h2>
               <input
                 required
                 type="text"
