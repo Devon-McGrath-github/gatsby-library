@@ -1,10 +1,13 @@
 :root {
   --spacing: 24px;
   --bg-color: #fff;
+  --hov-color: #646cff;
 }
 
 .contentWrapper {
   padding: var(--spacing);
+  margin: 0 auto;
+  max-width: 1200px;
 }
 
 .grid {
@@ -15,7 +18,7 @@
 }
 
 .modalOverlay {
-  background-color: rgba(64, 60, 62, 0.66);
+  background-color: rgba(64, 60, 62, 0.8);
   top: 0;
   left: 0;
   width: 100%;
@@ -46,6 +49,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-bottom: 24px;
 }
 
 .readStatus {
@@ -61,16 +65,28 @@
   margin: 0 auto;
   position: relative;
   border-radius: 5px;
+  background-color: #2e2e2e;
   box-shadow: 5px 30px 60px rgba(0, 0, 0, 0.12);
-}
-.card:hover {
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
 }
 
 .cardContent {
   padding: 16px 16px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: space-between;
+  gap: 6px;
   text-align: center;
+}
+
+.readHeader {
+  background-color: var(--hov-color);
+  border-radius: 5px;
+  width: 80%;
+}
+/* lazy color change for turnary */
+.unreadHeader {
+  background-color: rgb(255, 57, 57);
+  border-radius: 5px;
+  width: 80%;
 }

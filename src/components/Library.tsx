@@ -9,10 +9,12 @@ import {
   cardContent,
   readStatus,
   addBookBtn,
+  readHeader,
+  unreadHeader,
 } from "./Library.module.css";
 
 const INITIAL_LIBRARY: Array<object> = [
-  { id: "ID", title: "title", author: "author", readStatus: "read" },
+  { id: "ID", title: "1984", author: "George Orwell", readStatus: "Read" },
 ];
 const INITIAL_TITLE: string = "";
 const INITIAL_AUTHOR: string = "";
@@ -64,9 +66,13 @@ const Library = () => {
   const libraryItems = myLibrary.map((book) => (
     <div className={card}>
       <div className={cardContent}>
-        <h3>{book.title}</h3>
-        <h4>{book.author}</h4>
-        <p>{book.readStatus}</p>
+        <h1>{book.title}</h1>
+        <h2>{book.author}</h2>
+        {book.readStatus === "Read" ? (
+          <h3 className={readHeader}>{book.readStatus}</h3>
+        ) : (
+          <h3 className={unreadHeader}>{book.readStatus}</h3>
+        )}
       </div>
     </div>
   ));
