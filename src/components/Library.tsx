@@ -77,6 +77,10 @@ const Library = () => {
     </div>
   ));
 
+  const handleDeleteBook = (id) => {
+    
+  }
+
   return (
     <div className={contentWrapper}>
       <div className={addBookBtn}>
